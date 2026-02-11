@@ -1,0 +1,12 @@
+{
+  "_comment": "Create this cron job via OpenClaw cron tool: cron(action='add', job={...})",
+  "name": "memory-observer",
+  "schedule": { "kind": "cron", "expr": "*/15 * * * *" },
+  "payload": {
+    "kind": "agentTurn",
+    "message": "Run the memory observer: exec bash ~/clawd/scripts/observer.sh\n\nAfter it completes, check ~/clawd/memory/observations.md word count. If over 8000 words, also run: exec bash ~/clawd/scripts/reflector.sh\n\nReply with NO_REPLY when done.",
+    "timeoutSeconds": 120
+  },
+  "sessionTarget": "isolated",
+  "delivery": { "mode": "none" }
+}

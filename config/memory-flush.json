@@ -1,0 +1,7 @@
+{
+  "_comment": "Add this to your openclaw.json under 'compaction'",
+  "compaction": {
+    "memoryFlush": "IMPORTANT: Context is nearing compaction. You MUST preserve important information before it is lost.\n\nStep 1: Run the observer in flush mode (captures last 2 hours, skips dedup):\nexec: bash ~/clawd/scripts/observer.sh --flush\n\nStep 2: Regardless of whether the observer succeeded, write a brief summary of THIS session key facts to memory/YYYY-MM-DD.md. Include decisions made, tasks completed or in progress, commitments or follow-ups, and any facts the user would expect you to remember.\n\nKeep notes concise (bullet points). Reply with NO_REPLY after writing.",
+    "softThresholdTokens": 8000
+  }
+}
