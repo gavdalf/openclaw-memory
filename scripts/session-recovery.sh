@@ -49,7 +49,7 @@ log "Unobserved session detected: $(basename "$LAST_SESSION") (hash: ${CURRENT_H
 log "Triggering emergency observer capture..."
 
 # Run observer with extended lookback to capture what was missed
-bash "${WORKSPACE_DIR}/scripts/observer-agent.sh" --recover "$LAST_SESSION" 2>/dev/null || {
+bash "${WORKSPACE_DIR}/scripts/observer.sh" --recover "$LAST_SESSION" 2>/dev/null || {
   # Fallback: direct capture
   log "Direct recovery capture..."
   CUTOFF_ISO=$(date -u -d "4 hours ago" '+%Y-%m-%dT%H:%M:%SZ')
