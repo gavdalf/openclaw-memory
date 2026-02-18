@@ -28,9 +28,8 @@ LOCK_FILE="/tmp/total-recall-reflector-$(id -u).lock"
 # Source env if available (grep-guard: only export KEY=VALUE lines)
 if [ -f "$WORKSPACE/.env" ]; then
   set -a
-  grep -E '^[A-Za-z_][A-Za-z0-9_]*=' "$WORKSPACE/.env" | grep -v '^#' > /tmp/.total-recall-env-$$ 2>/dev/null || true
-  source /tmp/.total-recall-env-$$ 2>/dev/null || true
-  rm -f /tmp/.total-recall-env-$$
+  # Only load OPENROUTER_API_KEY (minimal credential exposure)
+  eval "$(grep -E '^OPENROUTER_API_KEY=' "$WORKSPACE/.env" 2>/dev/null)" || true
   set +a
 fi
 
